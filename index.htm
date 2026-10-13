@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090b16">
+    <meta name="description" content="Explore GitHub developers, discover repositories, and compare developer statistics with Dev Detective.">
+    <title>Dev Detective | GitHub Explorer</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body data-theme="dark">
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <header class="topbar">
+        <a class="brand" href="#" aria-label="Dev Detective home">
+            <span class="brand-icon">⌘</span>
+            <span>DEV<span class="brand-accent">DETECTIVE</span></span>
+        </a>
+
+        <div class="header-actions">
+            <span class="status"><span class="status-dot"></span> GITHUB EXPLORER</span>
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light theme">
+                <span id="theme-icon">☀</span>
+                <span id="theme-label">Light Mode</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <div class="eyebrow"><span></span> YOUR NEXT DEVELOPER DISCOVERY</div>
+            <h1>Find your next<br><span>coding inspiration.</span></h1>
+            <p class="hero-description">Explore GitHub developers, discover their latest projects, and find out who rules the repository arena.</p>
+        </section>
+
+        <section class="panel search-panel">
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">01 / EXPLORER</span>
+                    <h2>Find a developer</h2>
+                </div>
+                <span class="heading-icon">⌕</span>
+            </div>
+
+            <form id="search-form" class="search-form">
+                <div class="input-wrap">
+                    <span class="input-prefix">@</span>
+                    <input id="username" type="text" placeholder="Enter GitHub username..." autocomplete="off" required>
+                </div>
+                <button id="search-button" class="primary-button" type="submit">Search Profile <span>↗</span></button>
+            </form>
+
+            <p class="hint">Try a username like <button class="text-button" type="button" data-username="octocat">octocat</button></p>
+            <div id="search-status" class="message" role="status" aria-live="polite" hidden></div>
+            <div id="profile-result"></div>
+        </section>
+
+        <section class="panel repos-panel" id="repos-section" hidden>
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">02 / DISCOVERY</span>
+                    <h2>Latest repositories</h2>
+                </div>
+                <span id="repo-count" class="count-badge">0 PROJECTS</span>
+            </div>
+            <div id="repos-list" class="repo-grid"></div>
+        </section>
+
+        <section class="panel battle-panel">
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">03 / COMPETITION</span>
+                    <h2>Developer battle</h2>
+                </div>
+                <button id="battle-toggle" class="secondary-button" type="button" aria-expanded="false" aria-controls="battle-content">Enable Battle</button>
+            </div>
+
+            <div id="battle-content" hidden>
+                <p class="battle-description">Pick two developers. Compare their total stars across public repositories and discover the winner.</p>
+
+                <form id="battle-form" class="battle-form">
+                    <div class="battle-input-group">
+                        <label for="player-one">PLAYER ONE</label>
+                        <div class="input-wrap">
+                            <span class="input-prefix">@</span>
+                            <input id="player-one" type="text" placeholder="octocat" autocomplete="off" required>
+                        </div>
+                    </div>
+
+                    <div class="versus">VS</div>
+
+                    <div class="battle-input-group">
+                        <label for="player-two">PLAYER TWO</label>
+                        <div class="input-wrap">
+                            <span class="input-prefix">@</span>
+                            <input id="player-two" type="text" placeholder="torvalds" autocomplete="off" required>
+                        </div>
+                    </div>
+
+                    <button id="battle-button" class="primary-button battle-button" type="submit">Start Battle <span>⚡</span></button>
+                </form>
+
+                <div id="battle-status" class="message" role="status" aria-live="polite" hidden></div>
+                <div id="battle-result" class="battle-results"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span class="footer-brand">DEV<span class="brand-accent">DETECTIVE</span></span>
+        <p>Built for curious minds. Powered by the GitHub REST API.</p>
+    </footer>
+</body>
+</html>
